@@ -28,14 +28,14 @@ day = current_date.day
 
 for i in birthday_dict:
     if i["day"] == day and i["month"] == month:
-        with open(f"letter_templates/letter_{letter_num}.txt") as letters:
+        with open(f"letter_{letter_num}.txt") as letters:
             letter = letters.readlines()
             letter = ''.join(letter)
             new_letter = letter.replace("[NAME]", i["name"])
 
         with smtplib.SMTP("smtp.gmail.com") as connection:
-            email_id = "code.tester.lang@gmail.com"
-            password = "kietnaxzelcgllza"
+            email_id = "*******.lang@gmail.com"
+            password = "**********"
             connection.starttls()
             connection.login(user=email_id, password=password)
             connection.sendmail(from_addr=email_id, to_addrs=i["email"], msg=f"subject: Happy Birthday\n\n {new_letter}")
